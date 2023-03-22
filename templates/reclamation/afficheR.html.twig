@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    <h1> Liste des Reclamations </h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ asset('base-back.html.twig')}}">Home</a></li>
+            <li class="breadcrumb-item active">Liste des Reclamations</li>
+        </ol>
+    </nav>
+{% endblock %}
+
+{% block body %}
+
+    <table id="reclamations" class="table table-striped">
+        <h2>{% trans %}Rechercher{% endtrans %}</h2>
+        <input id="myInput" type="text" placeholder="Search..">
+        <br><br>
+        <thead>
+
+        <tr>
+
+            <td>ID</td>
+            <td>Redacteur Reclamation</td>
+            <td>Date Reclamation</td>
+            <td>Contenu</td>
+            <td>Image</td>
+
+            <td>Action</td>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for i in r %}
+        <tbody id="myTable">
+            <tr>
+
+
+                <td>{{ i.id }}</td>
+                <td>{{ i.redacteurRec|title }}</td>
+
+                <td>{{ i.dateRec|format_datetime(locale='en') }}</td>
+                <td>{{ i.contenuRec }}</td>
+
+                <td class="table-light"><img src="{{ asset('/uploads/' ~ i.image ) }}" alt="img" class="image" style="max-height: 150px; width: 120px;" ></td>
+
+
+                <td>
+                    <form action="{{ path('suppRR',{'id':i.id}) }}">
+                        <button>Supprimer</button></form>
+
+                </td>
+
+                </td>
+
+
+
+
+
+
+
+            </tr>
+        </tbody>
+
+        {% endfor %}
+        {{ knp_pagination_render(r) }}
+        </tbody>
+    </table>
+
+
+    </main>
+{% endblock %}

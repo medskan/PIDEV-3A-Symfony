@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    <h1> Liste des Produits</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ asset('base-back.html.twig')}}">Home</a></li>
+            <li class="breadcrumb-item active">Liste des Produits</li>
+        </ol>
+    </nav>
+{% endblock %}
+{%  block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="jumbotron">
+                    {{ form_start(form) }}
+{{ form_row(form.q) }}
+                    <h4>Catégories</h4>
+                    {{ form_row(form.categories) }}
+                    <h4>Prix</h4>
+<div class="row">
+
+        {{ form_row(form.min) }}
+<br><br>
+        {{ form_row(form.max) }}
+
+
+</div>
+<button type="submit" class="btn-primary">Filter</button>
+                    {{ form_end(form) }}
+                    <br><br>
+                </div>
+            </div>
+            <div class="col-md-9">
+    <div class="grid" style="
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-gap:20px;
+
+">
+    {% for p in produit %}
+
+
+    <div class="card">
+        {% if(p.quantite>0 )%}   <img src="{{ asset('uploads/brochures/'~ p.image)}}" alt="" class="card-img-top" style="height: 250px" >
+
+        {% else %}
+            <img src="{{ asset('uploads/brochures/'~ "394dd8fd8c587adfab81e313b1ce66a8.jpeg")}}" alt="" class="card-img-top" style="height: 250px">
+        {% endif %}
+<div class="card-body">
+<h5 class="card-title">
+    {{ p.idproduit}} {{ p.nomproduit }}
+
+</h5>
+  <div  class="card-title">
+Categorie:
+      {{ p.categorie }}<br>
+      Quantite disponible:       {{ p.quantite}}<br>
+     Prix:  {{ p.prixproduit}} dt<br>
+      Promo: {{ p.promotion}} %<br>
+
+  </div>
+    <p class="text-muted">  {{ p.description}}</p>
+    <a href="{{ path('updateP',{'idproduit':p.idproduit}) }}"> update</a>
+  <a href="{{ path('deleteP',{'idproduit':p.idproduit}) }}"> Delete</a>
+
+</div>
+</div>
+
+    {% endfor %}
+
+    </div>
+                <div>
+
+                    {{ knp_pagination_render(produit) }}
+                </div>
+                {% if qrCode %}
+                    <img src="{{ qrCode }}" alt="qr-code">
+                {% endif %}
+</div></div>
+   <button>   <a href="{{ path('listp')}}"> export pdf</a></button>  </div>
+
+{% endblock %}

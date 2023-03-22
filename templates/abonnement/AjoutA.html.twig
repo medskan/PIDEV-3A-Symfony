@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter Abonnement{% endblock %}
+{% block body %}
+    <div class="fox">
+        <center>
+    {{ form_start(f,{'attr':{'novalidate':'novalidate'}}) }}
+    <table>
+        <tr>
+            <td>{{ form_label(f.id,"identifiant") }}</td>
+            <td> {{ form_widget(f.id) }}</td>
+            <td> {{ form_errors(f.id) }}</td>
+        <tr>
+        <tr>
+            <td>{{ form_label(f.typeA,"type d'abonnement") }}</td>
+            <td> {{ form_widget(f.typeA) }}</td>
+            <td> {{ form_errors(f.typeA) }}</td>
+        <tr>
+        <tr>
+            <td>{{ form_label(f.tarifA,"prix") }}</td>
+            <td> {{ form_widget(f.tarifA) }}</td>
+            <td> {{ form_errors(f.tarifA) }}</td>
+        <tr>
+        <tr>
+            <td>{{ form_label(f.dateDebut,"date début") }}</td>
+            <td> {{ form_widget(f.dateDebut) }}</td>
+            <td> {{ form_errors(f.dateDebut) }}</td>
+        <tr>
+        <tr>
+            <td>{{ form_label(f.dateFin,"date fin") }}</td>
+            <td> {{ form_widget(f.dateFin) }}</td>
+            <td> {{ form_errors(f.dateFin) }}</td>
+        <tr>
+    </table>
+    {{ form_end(f) }}
+        </center>
+    </div>
+
+{% endblock %}

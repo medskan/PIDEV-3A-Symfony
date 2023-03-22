@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    <h1 xmlns="http://www.w3.org/1999/html"> Liste des categories</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ asset('base-back.html.twig')}}">Home</a></li>
+            <li class="breadcrumb-item active">Liste des categories</li>
+        </ol>
+    </nav>
+{% endblock %}
+{%  block body %}
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>nom</th><th>type</th>
+            <th>update</th>
+            <th>Delete</th>
+
+
+        </tr></thead>
+    <tbody>
+        <tr {% for p in categorie %}>
+            <td>{{ p.id}}</td>
+            <td> {{ p.nomC }}</td>
+            <td> {{ p.type}}</td>
+            <td><a href="{{ path('modifCategorie',{'id':p.id}) }}"> update</a></td>
+            <td><a href="{{ path('suppCategorie',{'id':p.id}) }}"> Delete</a></td>
+
+
+        </tr {% endfor %}>
+    </tbody>
+    </table>
+{% endblock %}

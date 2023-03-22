@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+        <table id="fournisseurs" class="table table-striped">
+            <thead>
+
+            <td>
+                <form action="{{ path('ajoutF') }}">
+                    <button>Ajouter</button></form>
+
+            </td>
+            <tr>
+
+                <td>CIN</td>
+                <td>Nom</td>
+                <td>Prénom</td>
+                <td>Téléphone</td>
+                <td>Email</td>
+                <td>Adresse</td>
+                <td>RIB</td>
+                <td>Image</td>
+                <td>Action1</td>
+                <td>Action2</td>
+
+            </tr>
+            </thead>
+            <tbody>
+
+
+            {% for i in f %}
+                <tr>
+
+
+                    <td>{{ i.id }}</td>
+                    <td>{{ i.nomF }}</td>
+                    <td>{{ i.prenomF }}</td>
+                    <td>{{ i.telF }}</td>
+                    <td>{{ i.emailF }}</td>
+                    <td>{{ i.adresse }}</td>
+                    <td>{{ i.ribF  }}</td>
+                    <td class="table-light"><img src="{{ asset('/uploads/' ~ i.image ) }}" alt="img" class="image" style="max-height: 150px; width: 120px;" ></td>
+
+
+                    <td>
+                        <form action="{{ path('modifF',{'id':i.id}) }}">
+                            <button>Modifier</button></form>
+
+                    </td>
+                    <td>
+                        <form action="{{ path('suppFF',{'id':i.id}) }}">
+                            <button>Supprimer</button></form>
+                    </td>
+
+                </tr>
+            {% endfor %}
+            {{ knp_pagination_render(f) }}
+            </tbody>
+        </table>
+{% endblock %}

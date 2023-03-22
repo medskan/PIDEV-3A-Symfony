@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter Fournisseurs{% endblock %}
+{% block body %}
+    <div class="fox">
+        <center>
+
+            <section class="section">
+                <div class="row-cols-8">
+                    <div class="row-cols-lg-2">
+                        <div class="card">
+                            <div class="card-body">
+            {{ form_start(f, {'attr': {'novalidate':'novalidate'}}) }}
+            <table>
+                <tr>
+                    <td>{{ form_label(f.id,"CIN") }}</td>
+                    <td>{{ form_widget(f.id) }}</td>
+                    <td>{{ form_errors(f.id) }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form_label(f.nomF,"Nom") }}</td>
+                    <td>{{ form_widget(f.nomF) }}</td>
+                    <td>{{ form_errors(f.nomF) }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form_label(f.prenomF,"Prénom") }}</td>
+                    <td>{{ form_widget(f.prenomF) }}</td>
+                    <td>{{ form_errors(f.prenomF) }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form_label(f.telF,"Téléphone") }}</td>
+                    <td>{{ form_widget(f.telF) }}</td>
+                    <td>{{ form_errors(f.telF) }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form_label(f.emailF,"Email") }}</td>
+                    <td>{{ form_widget(f.emailF) }}</td>
+                    <td>{{ form_errors(f.emailF) }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form_label(f.adresse,"Adresse") }}</td>
+                    <td>{{ form_widget(f.adresse) }}</td>
+                    <td>{{ form_errors(f.adresse) }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form_label(f.ribF,"RIB") }}</td>
+                    <td>{{ form_widget(f.ribF) }}</td>
+                    <td>{{ form_errors(f.ribF) }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form_label(f.image,"Image") }}</td>
+                    <td>{{ form_widget(f.image) }}</td>
+                    <td>{{ form_errors(f.image) }}</td>
+                </tr>
+                {{ form_end(f) }}
+            </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </center>
+    </div>
+{% endblock %}

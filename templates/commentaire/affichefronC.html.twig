@@ -1,0 +1,56 @@
+{% extends 'front.html.twig' %}
+
+
+{% block body %}
+    <section class="testimonial-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <span>Testimonial</span>
+                        <h2>Our cilent say</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="ts_slider owl-carousel">
+                <div class="ts_item">
+                    <div class="row">
+                        <tbody>
+                        {% for i in c %}
+                        <div class="col-lg-12 text-center">
+                            <div class="ti_pic">
+                                <img src="front/img/testimonial/testimonial-1.jpg" alt="">
+                            </div>
+                            <div class="ti_text">
+
+                                    <h5>{{ i.redacteurCom|title }}</h5>
+                                    <p>{{ i.dateCom|format_datetime(locale='en')}}</p>
+                                <div class="pub">
+                                    {{ i.publication.contenu }}
+                                </div>
+
+                            <div class="com">
+                                <p>- {{ i.text }} -</p>
+                                <form action="{{ path('suppCC',{'id':i.id}) }}">
+                                    <button class="primary-btn btn-normal appoinment-btn">Supprimer</button></form>
+                                <form action="{{ path('modifCC',{'id':i.id}) }}">
+                                    <button class="primary-btn btn-normal appoinment-btn">Modifier</button></form>
+                                <a href="/ajoutfronC" class="primary-btn btn-normal appoinment-btn">Commenter</a>
+                                <td class="table-light"><img src="{{ asset('/uploads/' ~ i.image ) }}" alt="img" class="image" style="max-height: 150px; width: 120px;" ></td>
+                                <hr color="white">
+                            </div>
+
+
+
+
+                                <!---<a href="#" class="primary-btn btn-normal appoinment-btn">Commenter</a>-->
+                            </div>
+                        </div>
+                        {% endfor %}
+                        </tbody>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

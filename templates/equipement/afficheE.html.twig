@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+{% block title%} Liste des Equipements{% endblock %}
+
+{% block body %}
+
+
+
+        {%for message in app.flashes('info') %}
+
+
+            <div  class="alert alert-success ">
+                {{ message }}
+            </div>
+        {% endfor %}
+        <table id="equipements" class="table table-striped">
+            <thead>
+            <td>
+                <form action="{{ path('ajoutE') }}">
+                    <button>Ajouter</button></form>
+
+            </td>
+
+            <tr>
+                <h2>Recherche</h2>
+
+                <input id="myInput" type="text" placeholder="Search..">
+
+
+                <td>Ref</td>
+                <td>Nom</td>
+                <td>Type</td>
+                <td>Marque</td>
+                <td>Gamme</td>
+                <td>Quantité</td>
+                <td>Date Commande</td>
+                <td>Prix</td>
+                <td>Fournisseur</td>
+                <td>Action1</td>
+                <td>Action2</td>
+
+            </tr>
+
+
+
+
+            </thead>
+            <tbody>
+            {% for i in e %}
+            <tbody id="myTable">
+                <tr>
+
+
+                    <td>{{ i.id }}</td>
+                    <td>{{ i.nomE }}</td>
+                    <td>{{ i.typeE }}</td>
+                    <td>{{ i.marque }}</td>
+                    <td>{{ i.gamme }}</td>
+                    <td>{{ i.quantite }}</td>
+                    <td>{{ i.dateCommande|date("d/m/Y")  }}</td>
+                    <td>{{ i.prix}} </td>
+                    <td>{{ i.Fournisseur.prenomF}} </td>
+
+
+                    <td>
+                        <form action="{{ path('modifE',{'id':i.id}) }}">
+                            <button>Modifier</button></form>
+
+                    </td>
+                    <td>
+                        <form action="{{ path('suppEquipement',{'id':i.id}) }}">
+                            <button>Supprimer</button></form>
+
+                    </td>
+                </tr>
+            {% endfor %}
+            {{ knp_pagination_render(e) }}
+            </tbody>
+            </tbody>
+        </table>
+
+
+{% endblock %}

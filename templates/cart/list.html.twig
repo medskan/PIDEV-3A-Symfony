@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    <h1> Liste des Commandes</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ asset('base-back.html.twig')}}">Home</a></li>
+            <li class="breadcrumb-item active">Liste des Commandes</li>
+        </ol>
+    </nav>
+{% endblock %}
+{%  block body %}
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Date </th>
+            <th>num</th>
+            <th>Total</th>
+<th>Nom Client</th>
+            <th>Delete</th>
+
+
+        </tr></thead>
+        <tbody>
+        <tr {% for p in commandes %}>
+            <td>{{ p.id}}</td>
+            <td> {{ p.Date|date }}</td>
+            <td> {{ p.numero_commande}}</td>
+            <td> {{ p.total }} dt</td>
+            <td> {{ p.idc }} </td>
+            <td><a href="{{ path('cart_deleteC',{'id':p.id}) }}"> Delete</a></td>
+
+        </tr {% endfor %}>
+        </tbody>
+    </table>
+{% endblock %}

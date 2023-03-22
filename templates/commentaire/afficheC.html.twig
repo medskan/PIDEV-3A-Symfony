@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    <h1> Liste des Commentaires </h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ asset('base-back.html.twig')}}">Home</a></li>
+            <li class="breadcrumb-item active">Liste des Commentaires </li>
+        </ol>
+    </nav>
+{% endblock %}
+
+
+
+{% block body %}
+
+    <table id="commentaires" class="table table-striped">
+        <thead>
+        <tr>
+           <div class="aa" >
+            <td>ID</td>
+            <td>Redacteur</td>
+            <td>Date</td>
+            <td>Texte</td>
+           </div>
+            <td>Publication</td>
+            <td>Image</td>
+            <td>Action1</td>
+            <td>Action2</td>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for i in c %}
+            <tr>
+
+
+                <td>{{ i.id }}</td>
+                <td>{{ i.redacteurCom|title }}</td>
+                <td>{{ i.dateCom|format_datetime(locale='en') }}</td>
+                <td>{{ i.text }}</td>
+                <td>{{ i.publication.contenu }}</td>
+                <td class="table-light"><img src="{{ asset('/uploads/' ~ i.image ) }}" alt="img" class="image" style="max-height: 150px; width: 120px;" ></td>
+
+                <td>
+                    <form action="{{ path('suppC',{'id':i.id}) }}">
+                        <button>Supprimer</button></form>
+                </td>
+                <td>
+                    <form action="{{ path('modifC',{'id':i.id}) }}">
+                        <button>Modifier</button></form>
+                </td>
+
+
+
+
+
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

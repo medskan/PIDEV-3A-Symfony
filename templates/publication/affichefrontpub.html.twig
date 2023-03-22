@@ -1,0 +1,96 @@
+{% extends 'front.html.twig' %}
+
+
+{% block body %}
+    <section class="testimonial-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <span>Testimonial</span>
+                        <h2>Our cilent say</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="ts_slider owl-carousel">
+                <div class="ts_item">
+                    <div class="row">
+                        <tbody>
+                        {% for i in p %}
+                        <div class="col-lg-12 text-center">
+                            <div class="ti_pic">
+                                <img src="front/img/testimonial/testimonial-1.jpg" alt="">
+                            </div>
+                            <div class="ti_text">
+                                <h5>{{ i.redacteurPub|title }}</h5>
+                                <p>{{ i.contenu }}</p>
+                                <p>{{ i.datePub|format_datetime(locale='en')}}</p>
+                                <p>{{ i.note }}</p>
+                                <td>  <div class="rw-ui-container" ></div></td>
+
+
+                                <!--Like-->
+                                <div class="primary-btn btn-normal appoinment-btn">
+                                <a href="{{ path('likee', {'id':i.id}) }}" class="btn btn-link js-like">
+                                    {% if i.isLikedd() %}
+                                    <i class="fas fa-thumbs-up">
+                                        {% else %}
+                                        <i class="far fa-thumbs-up">
+                                            {% endif %}
+                                            <span  class="js-likes">{{ i.PubLikes|length}} </span>
+                                            <span class="js-label">J'aime</span>
+                                        </i>
+
+                                </a>
+                                </div>
+                                         <!--Like-->
+                                <td class="table-light"><img src="{{ asset('/uploads/' ~ i.image ) }}" alt="img" class="image" style="max-height: 150px; width: 120px;" ></td>
+
+                                <td>
+                                    <form  action="{{ path('suppfronP',{'id':i.id}) }}">
+                                        <button class="primary-btn btn-normal appoinment-btn">Supprimer</button></form>
+                                    <form   action="{{ path('modiffronP',{'id':i.id}) }}">
+                                        <button class="primary-btn btn-normal appoinment-btn">Modifier</button></form>
+
+                                </td>
+                                <td>
+                                    <a href="/ajoutfronC" class="primary-btn btn-normal appoinment-btn">Commenter</a>
+                                </td>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        </tbody>
+                    </div>
+                </div>
+            </div>
+            <!-- start Gist JS code-->
+            <script>
+                (function(d,h,w){var gist=w.gist=w.gist||[];gist.methods=['trackPageView','identify','track','setAppId'];gist.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);gist.push(e);return gist;}};for(var i=0;i<gist.methods.length;i++){var c=gist.methods[i];gist[c]=gist.factory(c)}s=d.createElement('script'),s.src="https://widget.getgist.com",s.async=!0,e=d.getElementsByTagName(h)[0],e.appendChild(s),s.addEventListener('load',function(e){},!1),gist.setAppId("g4dngrqb"),gist.trackPageView()})(document,'head',window);
+            </script>
+            <!-- end Gist JS code-->
+            <!--Like-->
+            <script>
+                function onClickBtnLike(event){
+                    event.preventDefault();
+                    const url=this.href;
+                    const spanCount = this.querySelector('span.js-likes');
+                    const icone=this.querySelector('i');
+                    axios.get(url).then(function(response){
+                        spanCount.textContent=response.data.likes;
+                        if(icone.classList.contains('fas'))icone.classList.replace('fas','far');
+                        else icone.classList.replace('far','fas');
+                    })
+                }
+                document.querySelectorAll('a.js-like').forEach(function(link){
+
+                    link.addEventListener('click',onClickBtnLike);
+
+                })
+
+            </script>
+            <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+            <!--Like-->
+
+        </div>
+    </section>
+{% endblock %}

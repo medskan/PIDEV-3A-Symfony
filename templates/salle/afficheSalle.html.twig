@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+        <table id="salles" class="table table-striped">
+            <h2>{% trans %}Rechercher{% endtrans %}</h2>
+            <input id="myInput" type="text" placeholder="Search..">
+            <br><br>
+            <thead>
+            <td>
+                <form action="{{ path('ajoutS') }}">
+                    <button>Ajouter</button></form>
+
+            </td>
+            <tr>
+
+                <td>Identifiant de la salle </td>
+                <td>Nom de la salle </td>
+                <td>Adresse de la salle </td>
+                <td>Code postal de la salle </td>
+                <td>Ville de la salle </td>
+                <td>Nombre des personnels</td>
+                <td>Image</td>
+                <td>Action1</td>
+                <td>Action2</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for i in s%}
+            <tbody id="myTable">
+                <tr>
+
+
+                    <td>{{ i.id }}</td>
+                    <td>{{ i.nomS }}</td>
+                    <td>{{ i.adresseS }}</td>
+                    <td>{{ i.codePostal }}</td>
+                    <td>{{ i.ville}}</td>
+                    <td>{{ i.nombreP }}</td>
+                    <td class="table-light"><img src="{{ asset('/uploads/' ~ i.image ) }}" alt="img" class="image" style="max-height: 150px; width: 120px;" ></td>
+
+                    <td>
+                        <form action="{{ path('suppSS',{'id':i.id}) }}">
+                            <button>Supprimer</button></form>
+
+                    </td>
+                    <td>
+                        <form action="{{ path('modifS',{'id':i.id}) }}">
+                            <button>Modifier</button></form>
+
+                    </td>
+
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </main>
+{% endblock %}

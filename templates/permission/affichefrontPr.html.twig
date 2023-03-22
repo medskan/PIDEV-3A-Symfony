@@ -1,0 +1,59 @@
+{% extends 'front.html.twig' %}
+
+
+{% block body %}
+<section class="class-timetable-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+               <main id="main" class="main">
+                   <table id="permissions" class="table table-striped">
+                        <thead>
+                              <tr>
+                                     <td>Type de la permission </td>
+                                     <td>Réclamation</td>
+                                     <td>Date début </td>
+                                     <td>Date fin </td>
+                                     <td>Personnel</td>
+                                     <td>Image</td>
+                                     <td>Action1</td>
+                                     <td>Action2</td>
+                              </tr>
+                        </thead>
+        <tbody>
+        {% for i in pr %}
+            <tr>
+                <td>{{ i.type }}</td>
+                <td>{{ i.reclamation }}</td>
+                <td>{{ i.dateD|date("d/m/Y")  }}</td>
+                <td>{{ i.dateF|date("d/m/Y")  }}</td>
+                <td>{{ i.personnel.nomP}} </td>
+                <td class="table-light"><img src="{{ asset('/uploads/' ~ i.image ) }}" alt="img" class="image" style="max-height: 150px; width: 120px;" ></td>
+
+
+                <td>
+                    <form action="{{ path('suppfrontPr',{'id':i.id}) }}">
+                        <button>Supprimer</button></form>
+
+                </td>
+
+                <td>
+                    <form action="{{ path('modiffrontPr',{'id':i.id}) }}">
+                        <button>Modifier</button></form>
+
+                </td>
+
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+               </main>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    {% endblock %}
+

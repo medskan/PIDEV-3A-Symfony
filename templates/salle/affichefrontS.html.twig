@@ -1,0 +1,27 @@
+{% extends 'front.html.twig' %}
+{% block body %}
+    <tbody>
+
+    <center> <a href="#" class="primary-btn  btn-normal">Consulter map !!</a></center>
+    {% for i in s %}
+    <section class="banner-section set-bg" data-setbg="{{ asset('/uploads/' ~ i.image ) }}" alt="img" class="image" style="max-height: 550px; width: 1680px;">
+       <center> <div class="container">
+            <div class="row">
+                <div class="col-lg-15 text-center">
+                    <div class="bs-text">
+
+                        <h2>{{ i.nomS }}</h2>
+                        <div class="bt-tips">{{ i.adresseS }}</div>
+                        <div class="bt-tips">{{ i.codePostal }}</div>
+                        <a href="#" class="primary-btn  btn-normal">RESERVER !!</a>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+       </center>
+    </section>
+    {% endfor %}
+    </tbody>
+{% endblock %}

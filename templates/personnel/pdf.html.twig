@@ -1,0 +1,51 @@
+{% block body %}
+    <h1 align ="center">  LISTE DES PERSONNELS   </h1>
+    <main id="main" class="main">
+
+        <table id="personnels" class="table table-striped">
+            <thead>
+
+
+            <tr>
+
+                <td>Identifiant</td>
+                <td>Nom</td>
+                <td>Prénom</td>
+                <td>Téléphone</td>
+                <td>Email</td>
+                <td>Poste</td>
+                <td>Nombre d'heures de travail</td>
+                <td>Nombre d'heures d'absence</td>
+                <td>Date d'embauche</td>
+                <td>Salle</td>
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for i in personnels %}
+
+                <tr>
+
+
+                    <td>{{ i.id }}</td>
+                    <td>{{ i.nomP }}</td>
+                    <td>{{ i.prenomP }}</td>
+                    <td>{{ i.telP }}</td>
+                    <td>{{ i.emailP }}</td>
+                    <td>{{ i.poste}} </td>
+                    <td>{{ i.hTravail}} </td>
+                    <td>{{ i.hAbsence}} </td>
+                    <td>{{ i.dateEmbauche|date("d/m/Y")}} </td>
+                    <td>{{ i.salle.nomS}} </td>
+
+                </tr>
+
+            {% endfor %}
+            </tbody>
+        </table>
+    </main>
+
+{% endblock %}
+
+
+

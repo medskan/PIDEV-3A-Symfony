@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter Livraisons{% endblock %}
+{% block body %}
+    <div class="fox">
+    <center>
+        {{ form_start(f, {'attr': {'novalidate':'novalidate'}}) }}
+        <table>
+            <tr>
+                <td>{{ form_label(f.id,"ID") }}</td>
+                <td>{{ form_widget(f.id) }}</td>
+                <td>{{ form_errors(f.id) }}</td>
+            </tr>
+            <tr>
+                <td>{{ form_label(f.numL,"Numéro Livraison") }}</td>
+                <td>{{ form_widget(f.numL) }}</td>
+                <td>{{ form_errors(f.numL) }}</td>
+            </tr>
+            <tr>
+                <td>{{ form_label(f.nomLivreur,"Nom Livreur") }}</td>
+                <td>{{ form_widget(f.nomLivreur) }}</td>
+                <td>{{ form_errors(f.nomLivreur) }}</td>
+            </tr>
+            <tr>
+                <td>{{ form_label(f.prenomLivreur,"Prénom Livreur") }}</td>
+                <td>{{ form_widget(f.prenomLivreur) }}</td>
+                <td>{{ form_errors(f.prenomLivreur) }}</td>
+            </tr>
+            <tr>
+                <td>{{ form_label(f.telLivreur,"Téléphone") }}</td>
+                <td>{{ form_widget(f.telLivreur) }}</td>
+                <td>{{ form_errors(f.telLivreur) }}</td>
+            </tr>
+            <tr>
+                <td>{{ form_label(f.adresseLivraison,"Adresse") }}</td>
+                <td>{{ form_widget(f.adresseLivraison) }}</td>
+                <td>{{ form_errors(f.adresseLivraison) }}</td>
+            </tr>
+            <tr>
+                <td>{{ form_label(f.dateLivraison,"Date Commande") }}</td>
+                <td>{{ form_widget(f.dateLivraison) }}</td>
+                <td>{{ form_errors(f.dateLivraison) }}</td>
+            </tr>
+
+
+        </table>
+        {{ form_end(f) }}
+    </center>
+    </div>
+{% endblock %}

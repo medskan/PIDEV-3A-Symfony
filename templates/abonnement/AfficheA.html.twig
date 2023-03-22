@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+{% block title%} Liste des Abonnements{% endblock %}
+
+{% block body %}
+    <td>
+        <form action="{{ path('ajoutA') }}">
+            <button>Ajouter</button></form>
+
+    </td>
+        <table id="abonnement" class="table table-striped">
+
+            <thead>
+            <tr>
+
+                <td>ID</td>
+                <td>Type</td>
+                <td>Tarif</td>
+                <td>DateDebut</td>
+                <td>DateFin</td>
+                <td>Action1</td>
+                <td>Action2</td>
+                <td>Action3</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for i in c %}
+                <tr>
+
+
+                    <td>{{ i.id }}</td>
+                    <td>{{ i.typeA }}</td>
+                    <td>{{ i.tarifA }}</td>
+                    <td>{{ i.dateDebut|date("d/m/Y") }}</td>
+                    <td>{{ i.dateFin|date("d/m/Y") }}</td>
+                    <td>
+                        <form action="{{ path('ajoutA',{'id':i.id}) }}">
+                            <button>Ajouter</button></form>
+
+                    </td>
+                    <td>
+                        <form action="{{ path('suppA',{'id':i.id}) }}">
+                            <button>Supprimer</button></form>
+
+                    </td>
+                    <td>
+                        <form action="{{ path('modifA',{'id':i.id}) }}">
+                            <button>Modifier</button></form>
+
+                    </td>
+
+
+
+
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+{% endblock %}

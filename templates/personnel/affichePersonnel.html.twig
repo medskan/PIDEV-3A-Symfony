@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    <h1> Liste des Personnels</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ asset('base.html.twig')}}">Home</a></li>
+            <li class="breadcrumb-item active">Liste des Personnels</li>
+        </ol>
+    </nav>
+{% endblock %}
+
+
+{% block body %}
+
+
+        <table id="personnels" class="table table-striped">
+            <thead>
+            <td>
+                <form action="{{ path('ajoutPersonnel') }}">
+                    <button>Ajouter</button></form>
+
+            </td>
+
+            <td>
+                <form action="{{ path('chartjs') }}">
+                    <button>stat</button></form>
+
+            </td>
+
+            <td>
+                <form action="{{ path('listpdf') }}">
+                    <button>imprimer</button></form>
+
+            </td>
+            <tr>
+
+                <td>Identifiant</td>
+                <td>Nom</td>
+                <td>Prénom</td>
+                <td>Téléphone</td>
+                <td>Email</td>
+                <td>Salaire</td>
+                <td>Poste</td>
+                <td>Nombre d'heures de travail</td>
+                <td>Nombre d'heures d'absence</td>
+                <td>Date d'embauche</td>
+                <td>Salle</td>
+
+
+                <td>Action1</td>
+                <td>Action2</td>
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for i in p %}
+
+                <tr>
+
+
+                    <td>{{ i.id }}</td>
+                    <td>{{ i.nomP }}</td>
+                    <td>{{ i.prenomP }}</td>
+                    <td>{{ i.telP }}</td>
+                    <td>{{ i.emailP }}</td>
+                    <td>{{ i.salaireP}} </td>
+                    <td>{{ i.poste}} </td>
+                    <td>{{ i.hTravail}} </td>
+                    <td>{{ i.hAbsence}} </td>
+                    <td>{{ i.dateEmbauche|date("d/m/Y")}} </td>
+                    <td>{{ i.salle.nomS}} </td>
+                    <td>
+                        <form action="{{ path('suppPersonnel',{'id':i.id}) }}">
+                            <button>Supprimer</button></form>
+
+                    </td>
+                    <td>
+                        <form action="{{ path('modifPersonnel',{'id':i.id}) }}">
+                            <button>Modifier</button></form>
+
+                    </td>
+
+
+
+
+                </tr>
+
+            {% endfor %}
+            </tbody>
+        </table>
+    </main>
+
+{% endblock %}
+
+
+

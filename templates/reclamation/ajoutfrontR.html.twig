@@ -1,0 +1,31 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}Ajouter Categorie{% endblock %}
+{% block body %}
+    {{ form_start(f,{'attr':{'novalidate':'novalidate'}}) }}
+
+    <center>
+
+    <table>
+
+        <tr>
+            <td>{{ form_label(f.redacteurRec,"Rédacteur") }}</td>
+            <td> {{ form_widget(f.redacteurRec) }}</td>
+            <td> {{ form_errors(f.redacteurRec) }}</td>
+        <tr>
+        <tr>
+            <td>{{ form_label(f.dateRec,"Date reclamation") }}</td>
+            <td> {{ form_widget(f.dateRec) }}</td>
+            <td> {{ form_errors(f.dateRec) }}</td>
+        <tr>
+        <tr>
+            <td>{{ form_label(f.contenuRec,"Contenu") }}</td>
+            <td> {{ form_widget(f.contenuRec) }}</td>
+            <td> {{ form_errors(f.contenuRec) }}</td>
+        <tr>
+
+    </table>
+    <center>
+
+    {{ form_end(f) }}
+{% endblock %}

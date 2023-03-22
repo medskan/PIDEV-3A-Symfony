@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+{% block title%} Liste des Abonnes{% endblock %}
+{% block body %}
+    <center>
+    <p>Cherchez un abonné à partir d'une de ses caracéristiques</p>
+    <input id="myInput" type="text" placeholder="Search..">
+        <td>
+            <form action="{{ path('ajoutAb') }}">
+                <button>Ajouter</button></form>
+
+        </td>
+    </center>
+
+        <table id="abonne" class="table table-striped">
+            <thead>
+            <tr>
+
+                <td>CIN</td>
+                <td>nom</td>
+                <td>prenom</td>
+                <td>age</td>
+                <td>sexe</td>
+                <td>mdp</td>
+                <td>email</td>
+                <td>telephone</td>
+                <td>adresse</td>
+                <td>Type</td>
+                <td>Action1</td>
+                <td>Action2</td>
+                <td>Action3</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for i in c %}
+            <tbody id="myTable">
+                <tr>
+
+
+                    <td>{{ i.id }}</td>
+                    <td>{{ i.nomA }}</td>
+                    <td>{{ i.prenomA }}</td>
+                    <td>{{ i.ageA }}</td>
+                    <td>{{ i.sexeA }}</td>
+                    <td>{{ i.mdpA }}</td>
+                    <td>{{ i.emailA }}</td>
+                    <td>{{ i.telA }}</td>
+                    <td>{{ i.adresseA }}</td>
+                    <td>{{ i.Abonnement.typeA }}</td>
+                    <td>
+                        <form action="{{ path('ajoutAb',{'id':i.id}) }}">
+                            <button>Ajouter</button></form>
+
+                    </td>
+                    <td>
+                        <form action="{{ path('suppAb',{'id':i.id}) }}">
+                            <button>Supprimer</button></form>
+
+                    </td>
+                    <td>
+                        <form action="{{ path('modifAb',{'id':i.id}) }}">
+                            <button>Modifier</button></form>
+
+                    </td>
+                </tr>
+            </tbody>
+            {% endfor %}
+            </tbody>
+
+        </table>
+
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'inscription.html.twig' %}
+
+              {% block body %}
+
+
+                      {{ form_start(form) }}
+
+
+                          <div class="input-group">
+                              <div class="input--style-3">
+                                  {{ form_row(form.username, {'label': 'Nom d\'utilisateur','attr':{'placeholder':'Nom d\'utilisateur...'}}) }}
+                              </div>
+                          </div>
+                          <div class="input-group">
+                              <div class="input--style-3">
+                                  {{ form_row(form.email, {'label': 'Email','attr':{'placeholder':'email...'}}) }}
+                              </div>
+                          </div>
+                          <div class="input-group">
+                              <div class="input--style-3">
+                                  {{ form_row(form.password, {'label': 'Mot de passe ','attr':{'placeholder':'mot de passe...'}}) }}    </div>
+                          </div>
+                          <div class="input-group">
+                              <div class="input--style-3">
+                                  {{ form_row(form.confirm_password, {'label': 'Confirmation du mot de passe','attr':{'placeholder':'Répétez votre mot de passe...'}}) }}
+                              </div>
+                          </div>
+                          <div class="p-t-10">
+                              <button type="submit" class="btn btn-success">Inscription!</button>
+                          </div>
+                      {{ form_end(form) }}
+
+              {% endblock %}

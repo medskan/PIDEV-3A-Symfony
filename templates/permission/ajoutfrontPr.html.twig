@@ -1,0 +1,76 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}Ajouter Permission{% endblock %}
+
+{% block body %}
+    <div class="fox">
+        <center>
+            <section class="contact-section spad">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="card-body">
+                                <div class="col-lg-6">
+                                    <div class="leave-comment">
+                                {# {{ form (f) }}#}
+                                {{ form_start(f,{'attr':{'novalidate':'novalidate'}}) }}
+
+                                <form>
+                                    <table>
+
+                                        <tr>
+                                            <td> {{ form_label(f.type,"Type de la permission")}} </td>
+                                            <td> {{ form_widget((f.type)) }} </td>
+                                            <td> {{ form_errors((f.type)) }} </td>
+                                        </tr>
+                                        <tr>
+                                            <td> {{ form_label(f.reclamation,"Réclamation")}} </td>
+                                            <td> {{ form_widget((f.reclamation)) }} </td>
+                                            <td> {{ form_errors((f.reclamation)) }} </td>
+                                        </tr>
+                                        <tr>
+                                            <td> {{ form_label(f.dateD,"Date début")}} </td>
+                                            <td> {{ form_widget((f.dateD)) }} </td>
+                                            <td> {{ form_errors((f.dateD)) }} </td>
+                                        </tr>
+                                        <tr>
+                                            <td> {{ form_label(f.dateF,"Date fin")}} </td>
+                                            <td> {{ form_widget((f.dateF)) }} </td>
+                                            <td> {{ form_errors((f.dateF)) }} </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td> {{ form_label(f.personnel,"Personnel")}} </td>
+                                            <td> {{ form_widget((f.personnel)) }} </td>
+                                            <td> {{ form_errors((f.personnel)) }} </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td> {{ form_label(f.image,"Image")}} </td>
+                                            <td> {{ form_widget((f.image)) }} </td>
+                                            <td> {{ form_errors((f.image)) }} </td>
+                                        </tr>
+                                        <tr>
+
+                                            <td> {{ form_widget(f.captchaCode, {'attr':{'class': 'form-control' }}) }} </td>
+
+                                        </tr>
+
+
+
+
+                                        {{ form_rest(f) }}
+
+                                    </table>
+                                </form>
+                                    </div>
+                                </div>
+                             </div>
+                          </div>
+                     </div>
+                </div>
+            </section>
+
+        </center>
+    </div>
+{% endblock %}

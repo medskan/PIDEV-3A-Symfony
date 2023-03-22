@@ -1,0 +1,80 @@
+{% extends 'front.html.twig' %}
+
+
+{%  block body %}
+    <section class="class-timetable-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-title">
+                        <br><br>  <span>Voici votre Panier</span>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="class-timetable">
+                        <table style='width:1300px'>
+                            <thead>
+
+                            <tr>
+                                <th>Produit</th>
+
+                                <th>description</th>
+                                <th>categorie</th>
+                                <th>Prix</th>
+                                <th>Quantité</th>
+
+                                <th>Actions</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for element in dataPanier %}
+                                <tr>
+                                    <td style='color:#ffffff'>{{ element.produit? element.produit.nomProduit}}</td>
+                                    <td style='color:#ffffff'>{{ element.produit? element.produit.description}} </td>
+                                    <td style='color:#ffffff'>{{ element.produit? element.produit.categorie}} </td>
+                                    <td style='color:#ffffff'>{{ element.produit? element.produit.prixProduit}} dt</td>
+                                    <td style='color:#ffffff'>{{ element.quantite }}</td>
+                                    <td style='color:#ffffff'>{% if element.produit %}
+                                            <button type="button">    <a href="{{path("cart_add", {id: element.produit.idproduit})}}" >
+                                                    ajouter
+                                                </a></button><br><br>
+                                            <button type="button">   <a href="{{path("cart_remove", {id: element.produit.idproduit})}}">
+                                                    supprimer du panier
+                                                </a></button><br><br>
+                                            <button type="button">  <a href="{{path("cart_delete", {id: element.produit.idproduit})}}">
+                                                    supprimer
+                                                </a></button><br><br>
+
+
+                                        {% endif %}
+                                    </td>
+
+                                </tr>
+
+                            {% else %}
+                                <tr>
+                                    <td style='color:#ffffff'>   <td colspan="5">Votre panier est vide</td>
+                                </tr>
+                            {% endfor %}
+
+                            </tbody>
+                        </table>
+                        <br><br>
+
+                    </div> <button type="button"><a href="{{path("cart_delete_all")}}">
+                            vider panier
+                        </a></button>
+                    <br> <br>
+                    <button type="button">   <a href="{{path("cart_valider")}}">
+                            valider commande
+                        </a> </button> </div>
+            </div>
+        </div>
+        </div>
+    </section>
+{% endblock %}

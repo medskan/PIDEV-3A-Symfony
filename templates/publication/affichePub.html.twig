@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    <h1> Liste des Publications </h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ asset('base-back.html.twig')}}">Home</a></li>
+            <li class="breadcrumb-item active">Liste des Publications </li>
+        </ol>
+    </nav>
+{% endblock %}
+
+{% block body %}
+
+    <table id="publications" class="table table-striped">
+        --
+        <thead>
+        <tr>
+
+            <td>ID</td>
+            <td>Redacteur Publication</td>
+            <td>Date publication</td>
+            <td>Contenu</td>
+            <td>Image</td>
+
+            <td>Action</td>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for i in p %}
+        <tbody id="myTable">
+            <tr>
+
+
+                <td>{{ i.id }}</td>
+                <td>{{ i.redacteurPub|title }}</td>
+                <td>{{ i.datePub|format_datetime(locale='en') }}</td>
+                <td>{{ i.contenu }}</td>
+                <td>{{ i.note }}</td>
+
+                <td class="table-light"><img src="{{ asset('/uploads/' ~ i.image ) }}" alt="img" class="image" style="max-height: 150px; width: 120px;" ></td>
+
+                <td>
+                    <form action="{{ path('suppPP',{'id':i.id}) }}">
+                        <button>Supprimer</button></form>
+
+                </td>
+
+                </td>
+
+
+
+
+
+
+
+            </tr>
+        {% endfor %}
+        {{ knp_pagination_render(p) }}
+        </tbody>
+    </table>
+    </main>
+{% endblock %}

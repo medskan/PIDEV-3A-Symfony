@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    <h1>Modifier Produit</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ asset('base-back.html.twig')}}">Home</a></li>
+            <li class="breadcrumb-item active">Modifier Produit</li>
+        </ol>
+    </nav>
+{% endblock %}
+{%  block body %}
+    {{ form_start(f, {'attr': {'novalidate': 'novalidate'}}) }}
+    <table>
+        <tr>  <td> {{ form_label(f.nomProduit) }}</td>
+            <td> {{ form_widget(f.nomProduit) }}</td>
+            <td>{{ form_errors(f.nomProduit) }}</td>
+        </tr>
+
+        <tr>  <td>{{ form_label(f.description) }}</td>
+            <td>  {{ form_widget(f.description) }}</td>
+            <td> {{ form_errors(f.description) }}</td>
+        </tr>
+
+        <tr>   <td>{{ form_label(f.categorie) }}</td>
+            <td>  {{ form_widget(f.categorie) }}</td>
+            <td>  {{ form_errors(f.categorie) }}</td>
+        </tr>
+
+        <tr>   <td> {{ form_label(f.quantite) }}</td>
+            <td> {{ form_widget(f.quantite) }}</td>
+            <td> {{ form_errors(f.quantite) }}</td>
+        </tr>
+
+        <tr>  <td> {{ form_label(f.prixProduit) }}</td>
+            <td> {{ form_widget(f.prixProduit) }}</td>
+            <td> {{ form_errors(f.prixProduit) }}</td>
+        </tr>
+
+        <tr>  <td>{{ form_label(f.promotion) }}</td>
+            <td> {{ form_widget(f.promotion) }}</td>
+            <td>{{ form_errors(f.promotion) }}</td>
+        </tr>
+
+        <tr>  <td>{{ form_label(f.image) }}</td>
+            <td>{{ form_widget(f.image) }}</td>
+            <td> {{ form_errors(f.image) }}</td>
+        </tr>
+    </table>
+    {{ form_end(f) }}
+
+{% endblock %}

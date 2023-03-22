@@ -1,0 +1,20 @@
+<!DOCTYPE html >
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}welcome{% endblock %}</title>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+</head>
+<body>
+{% block body %}
+    <center>
+    <div style="width:600px;height: 600px">
+    {{ render_chart(chart, {'id': 'my-chart'})}}</div></center>
+        {% endblock %}
+{% block javascript %}
+{{ encore_entry_script_tags('app') }}
+{% endblock %}
+</body>
+</html>

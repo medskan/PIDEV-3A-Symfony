@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter Abonné{% endblock %}
+{% block body %}
+    <div class="fox">
+        <center>
+    {{ form_start(f,{'attr':{'novalidate':'novalidate'}}) }}
+    <table>
+        <tr>
+            <td>{{ form_label(f.id,"CIN") }}</td>
+            <td> {{ form_widget(f.id) }}</td>
+            <td> {{ form_errors(f.id) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(f.nomA,"nom abonné") }}</td>
+            <td> {{ form_widget(f.nomA) }}</td>
+            <td> {{ form_errors(f.nomA) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(f.prenomA,"prénom abonné") }}</td>
+            <td> {{ form_widget(f.prenomA) }}</td>
+            <td> {{ form_errors(f.prenomA) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(f.ageA,"age de l'abonné") }}</td>
+            <td> {{ form_widget(f.ageA) }}</td>
+            <td> {{ form_errors(f.ageA) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(f.sexeA,"sexe de l'abonné") }}</td>
+            <td> {{ form_widget(f.sexeA) }}</td>
+            <td> {{ form_errors(f.sexeA) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(f.emailA,"adresse email") }}</td>
+            <td> {{ form_widget(f.emailA) }}</td>
+            <td> {{ form_errors(f.emailA) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(f.mdpA,"mot de passe") }}</td>
+            <td> {{ form_widget(f.mdpA) }}</td>
+            <td> {{ form_errors(f.mdpA) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(f.telA,"numéro téléphone") }}</td>
+            <td> {{ form_widget(f.telA) }}</td>
+            <td> {{ form_errors(f.telA) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(f.adresseA,"adresse domicile") }}</td>
+            <td> {{ form_widget(f.adresseA) }}</td>
+            <td> {{ form_errors(f.adresseA) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(f.Abonnement) }}</td>
+            <td> {{ form_widget(f.Abonnement) }}</td>
+            <td> {{ form_errors(f.Abonnement) }}</td>
+        </tr>
+    </table>
+    {{ form_end(f) }}
+        </center>
+    </div>
+
+
+{% endblock %}

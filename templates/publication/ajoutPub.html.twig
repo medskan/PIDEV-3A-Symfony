@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter Categorie{% endblock %}
+{% block body %}
+    {{ form_start(f,{'attr':{'novalidate':'novalidate'}}) }}
+
+        <center>
+
+    <table>
+
+        <tr>
+            <td>{{ form_label(f.redacteurPub) }}</td>
+            <td> {{ form_widget(f.redacteurPub) }}</td>
+            <td> {{ form_errors(f.redacteurPub) }}</td>
+        <tr>
+
+        <tr>
+            <td>{{ form_label(f.contenu) }}</td>
+            <td> {{ form_widget(f.contenu) }}</td>
+            <td> {{ form_errors(f.contenu) }}</td>
+        <tr>
+        <tr>
+            <td>{{ form_label(f.note) }}</td>
+            <td> {{ form_widget(f.note) }}</td>
+            <td> {{ form_errors(f.note) }}</td>
+        <tr>
+        <tr>
+            <td>{{ form_label(f.image,"Image") }}</td>
+            <td> {{ form_widget(f.image) }}</td>
+            <td> {{ form_errors(f.image) }}</td>
+        <tr>
+
+    </table>
+    <center>
+
+    {{ form_end(f) }}
+{% endblock %}

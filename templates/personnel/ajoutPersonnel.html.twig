@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    <h1>Ajout Personnel</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ asset('base.html.twig')}}">Home</a></li>
+            <li class="breadcrumb-item active">Ajout Personnel</li>
+        </ol>
+    </nav>
+{% endblock %}
+
+{% block body %}
+
+                                {# {{ form (f) }}#}
+                                {{ form_start(f,{'attr':{'novalidate':'novalidate'}}) }}   <div>
+                                    <table>
+                                        <tr>
+                                            <td> {{ form_label(f.id,"Identifiant du personnel")}} </td>
+                                            <td> {{ form_widget((f.id)) }} </td>
+                                            <td> {{ form_errors((f.id)) }} </td>
+                                        </tr>
+                                        <tr>
+                                            <td> {{ form_label(f.nomP,"Nom du personnel")}} </td>
+                                            <td> {{ form_widget((f.nomP)) }} </td>
+                                            <td> {{ form_errors((f.nomP)) }} </td>
+                                        </tr>
+                                        <tr>
+                                            <td> {{ form_label(f.prenomP,"Prenom du personnel")}} </td>
+                                            <td> {{ form_widget((f.prenomP)) }} </td>
+                                            <td> {{ form_errors((f.prenomP)) }} </td>
+                                        </tr>
+                                        <tr>
+                                            <td> {{ form_label(f.telP,"Téléphone")}} </td>
+                                            <td> {{ form_widget((f.telP)) }} </td>
+                                            <td> {{ form_errors((f.telP)) }} </td>
+                                        </tr>
+                                        <tr>
+                                            <td> {{ form_label(f.emailP,"Email")}} </td>
+                                            <td> {{ form_widget((f.emailP)) }} </td>
+                                            <td> {{ form_errors((f.emailP)) }} </td>
+                                        </tr>
+                                        <tr>
+                                            <td> {{ form_label(f.mdp,"Mot de passe")}} </td>
+                                            <td> {{ form_widget((f.mdp)) }} </td>
+                                            <td> {{ form_errors((f.mdp)) }} </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td> {{ form_label(f.salaireP,"Salaire")}} </td>
+                                            <td> {{ form_widget((f.salaireP)) }} </td>
+                                            <td> {{ form_errors((f.salaireP)) }} </td>
+                                        </tr>
+                                        <tr>
+                                            <td> {{ form_label(f.poste,"Poste")}} </td>
+                                            <td> {{ form_widget((f.poste)) }} </td>
+                                            <td> {{ form_errors((f.poste)) }} </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td> {{ form_label(f.hTravail,"Heures du travail")}} </td>
+                                            <td> {{ form_widget((f.hTravail)) }} </td>
+                                            <td> {{ form_errors((f.hTravail)) }} </td>
+                                        </tr>
+                                        <tr>
+                                            <td> {{ form_label(f.hAbsence,"Heures d'absence")}} </td>
+                                            <td> {{ form_widget((f.hAbsence)) }} </td>
+                                            <td> {{ form_errors((f.hAbsence)) }} </td>
+                                        </tr>
+                                        <tr>
+                                            <td> {{ form_label(f.dateEmbauche,"Date d'embauche")}} </td>
+                                            <td> {{ form_widget((f.dateEmbauche)) }} </td>
+                                            <td> {{ form_errors((f.dateEmbauche)) }} </td>
+                                        </tr>
+                                        <tr>
+                                            <td> {{ form_label(f.salle,"Salle")}} </td>
+                                            <td> {{ form_widget((f.salle)) }} </td>
+                                            <td> {{ form_errors((f.salle)) }} </td>
+                                        </tr>
+                                    </table>
+
+                                        {{ form_end(f) }}
+
+{% endblock %}

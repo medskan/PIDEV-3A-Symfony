@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <main id="main" class="main">
+        {{ form(searchPersonnel) }}
+
+        <table id="personnels" class="table table-striped">
+            <thead>
+
+
+            <tr>
+
+                <td>Identifiant</td>
+                <td>Nom</td>
+                <td>Prénom</td>
+                <td>Téléphone</td>
+                <td>Email</td>
+                <td>Mot De Passe</td>
+                <td>Salaire</td>
+                <td>Poste</td>
+                <td>Nombre d'heures de travail</td>
+                <td>Nombre d'heures d'absence</td>
+                <td>Date d'embauche</td>
+                <td>Salle</td>
+
+
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for personnels in resultOfSearch %}
+
+                <tr>
+
+
+                    <td>{{ personnels.id }}</td>
+                    <td>{{ personnels.nomP }}</td>
+                    <td>{{ personnels.prenomP }}</td>
+                    <td>{{ personnels.telP }}</td>
+                    <td>{{ personnels.emailP }}</td>
+                    <td>{{ personnels.mdp }}</td>
+                    <td>{{ personnels.salaireP}} </td>
+                    <td>{{ personnels.poste}} </td>
+                    <td>{{ personnels.hTravail}} </td>
+                    <td>{{ personnels.hAbsence}} </td>
+                    <td>{{ personnels.salle.nomS}} </td>
+
+
+
+
+
+
+                </tr>
+
+            {% endfor %}
+            </tbody>
+        </table>
+    </main>
+
+{% endblock %}
+
+
+

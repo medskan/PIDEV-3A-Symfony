@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+{% block title%} Liste des Livraisons{% endblock %}
+
+{% block body %}
+
+    <table id="livraisons" class="table table-striped">
+        <thead>
+        <td>
+            <form action="{{ path('ajoutL') }}">
+                <button>Ajouter</button></form>
+
+        </td>
+        <td>
+            <form action="{{ path('calendrier') }}">
+                <button>Consulter Calendrier</button></form>
+
+        </td>
+
+        <tr>
+
+            <td>ID</td>
+            <td>Numéro</td>
+            <td>Nom Livreur</td>
+            <td>Prénom Livreur</td>
+            <td>Téléphone</td>
+            <td>Adresse Livraison</td>
+            <td>Date Livraison</td>
+            <td>Action1</td>
+            <td>Action2</td>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for i in l %}
+            <tr>
+
+
+                <td>{{ i.id }}</td>
+                <td>{{ i.numL }}</td>
+                <td>{{ i.nomLivreur }}</td>
+                <td>{{ i.prenomLivreur }}</td>
+                <td>{{ i.telLivreur }}</td>
+                <td>{{ i.adresseLivraison }}</td>
+                <td>{{ i.dateLivraison|date("d/m/Y")  }}</td>
+
+                <td>
+                    <form action="{{ path('suppL',{'id':i.id}) }}">
+                        <button>Supprimer</button></form>
+                </td>
+                <td>
+                    <form action="{{ path('modifL',{'id':i.id}) }}">
+                        <button>Modifier</button></form>
+
+                </td>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,144 @@
+{% extends 'front.html.twig' %}
+
+
+{%  block body %}
+    <section class="hero-section">
+        <div style='background-color: black;'>
+            <div class="hs-slider owl-carousel">
+                <div class="hs-item set-bg" >
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4" >
+                                <div class="jumbotron" style='background-color: darkorange;'>
+                                    {{ form_start(form) }}
+                                    {{ form_row(form.q) }}  <br>
+                                    <h4>Catégories</h4>  <br>
+                                    {{ form_row(form.categories) }}
+                                    <h4>Prix</h4>
+
+                                            {{ form_row(form.min) }}
+                                        <br>
+                                            {{ form_row(form.max) }}
+
+                                    <br>
+                                    <button type="submit" class="btn-primary">Filter</button>
+                                    {{ form_end(form) }}
+                                    <br><br>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="grid" style="
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-gap:20px;
+
+">
+                                    {% for p in produit %}
+
+
+                                        <div class="card" style='background-color:darkorange;'>
+
+                                            {% if(p.quantite>0 )%}   <img src="{{ asset('uploads/brochures/'~ p.image)}}" alt="" class="card-img-top" style="height: 250px" >
+
+                                            {% else %}
+                                                <img src="{{ asset('uploads/brochures/'~ "394dd8fd8c587adfab81e313b1ce66a8.jpeg")}}" alt="" class="card-img-top" style="height: 250px">
+                                            {% endif %}
+                                            <div class="card-body">
+                                                <h5 class="card-title">
+                                                    {{ p.idproduit}} {{ p.nomproduit }}
+
+                                                </h5>
+                                                <div  class="card-title">
+                                                    Categorie:
+                                                    {{ p.categorie }}<br>
+                                                    Quantite disponible:       {{ p.quantite}}<br>
+                                                    Prix:  {{ p.prixproduit}} dt<br>
+                                                    Promo: {{ p.promotion}} %<br>
+
+                                                </div>
+                                                <div style='color:white;' >
+                                                    <p class="text-muted" >  {{ p.description}}</p>
+                                                </div>
+                                                <a href="{{ path('cart_add', {id:p.idproduit}) }}"> Ajouter au panier</a>
+                                                <a href="{{ path('like', {'idproduit':p.idproduit}) }}" class="btn btn-link js-like">
+                                                    {% if p.isliked() %}
+                                                    <i class="fas fa-thumbs-up">
+                                                        {% else %}
+                                                        <i class="far fa-thumbs-up">
+                                                            {% endif %}
+                                                            <span  class="js-likes">{{ p.likes|length}} </span>
+                                                            <span class="js-label">J'aime</span>
+
+
+                                                        </i>
+
+
+                                                </a>
+
+
+                                            </div>
+                                        </div>
+
+                                    {% endfor %}
+
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+            </div> <br> <div style=" display: block;
+    margin-left: 1040px;
+    margin-right:500px">  {{ knp_pagination_render(produit) }}
+            </div><br><br>
+            {% if qrCode %}
+                <center>
+                    <img src="{{ qrCode }}" alt="qr-code"><br><br>
+                </center>
+            {% endif %}
+        </div>
+
+    </section>
+
+{% endblock %}
+{% block js %}
+
+    <script src="{{ asset('front/js/jquery-3.3.1.min.js')}}"></script>
+    <script src="{{ asset('front/js/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('front/js/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{ asset('front/js/masonry.pkgd.min.js')}}"></script>
+    <script src="{{ asset('front/js/jquery.barfiller.js')}}"></script>
+    <script src="{{ asset('front/js/jquery.slicknav.js')}}"></script>
+    <script src="{{ asset('front/js/owl.carousel.min.js')}}"></script>
+    <script src="{{ asset('front/js/main.js')}}"></script>
+    <script src="{{ asset('https://kit.fontawesome.com/2451a8023f.js')}}" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        function onClickBtnLike(event){
+            event.preventDefault();
+            const url=this.href;
+            const spanCount = this.querySelector('span.js-likes');
+            const icone=this.querySelector('i');
+            axios.get(url).then(function(response){
+                spanCount.textContent=response.data.likes;
+                if(icone.classList.contains('fas'))icone.classList.replace('fas','far');
+                else icone.classList.replace('far','fas');
+            })
+        }
+        document.querySelectorAll('a.js-like').forEach(function(link){
+
+            link.addEventListener('click',onClickBtnLike);
+
+        })
+
+    </script>
+
+{% endblock %}

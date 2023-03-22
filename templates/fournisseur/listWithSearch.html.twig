@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <main id="main" class="main">
+        {{ form(searchFournisseur) }}
+        <table id="fournisseurs" class="table table-striped">
+            <thead>
+
+
+            <tr>
+
+                <td>CIN</td>
+                <td>Nom</td>
+                <td>Prénom</td>
+                <td>Téléphone</td>
+                <td>Email</td>
+                <td>Adresse</td>
+                <td>RIB</td>
+                <td>Image</td>
+
+
+            </tr>
+            </thead>
+            <tbody>
+
+
+            {% for i in fournisseurs %}
+                <tr>
+
+
+                    <td>{{ i.id }}</td>
+                    <td>{{ i.nomF }}</td>
+                    <td>{{ i.prenomF }}</td>
+                    <td>{{ i.telF }}</td>
+                    <td>{{ i.emailF }}</td>
+                    <td>{{ i.adresse }}</td>
+                    <td>{{ i.ribF  }}</td>
+                    <td class="table-light"><img src="{{ asset('/uploads/' ~ i.image ) }}" alt="img" class="image" style="max-height: 150px; width: 120px;" ></td>
+
+
+
+                </tr>
+            {% endfor %}
+
+
+
+
+            </tbody>
+        </table>
+        <h1>Liste des fournisseurs ordre par mail</h1>
+        <table border="1">
+            <thead>
+
+            <tr>
+
+                <td>CIN</td>
+                <td>Nom</td>
+                <td>Prénom</td>
+                <td>Téléphone</td>
+                <td>Email</td>
+                <td>Adresse</td>
+                <td>RIB</td>
+                <td>Image</td>
+
+
+            </tr>
+            </thead>
+            {% for fournisseur in fournisseursByMail %}
+            <tbody>
+            <tr>
+
+
+                <td>{{ fournisseur.id }}</td>
+                <td>{{ fournisseur.nomF }}</td>
+                <td>{{ fournisseur.prenomF }}</td>
+                <td>{{ fournisseur.telF }}</td>
+                <td>{{ fournisseur.emailF }}</td>
+                <td>{{ fournisseur.adresse }}</td>
+                <td>{{ fournisseur.ribF  }}</td>
+                <td class="table-light"><img src="{{ asset('/uploads/' ~ fournisseur.image ) }}" alt="img" class="image" style="max-height: 150px; width: 120px;" ></td>
+
+
+
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+    </main>
+{% endblock %}

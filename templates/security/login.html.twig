@@ -1,0 +1,24 @@
+{% extends 'inscription.html.twig' %}
+
+{% block body %}
+    <center>
+<h1>Connexion!</h1>
+
+    <form action="{{ path('security_login') }}" method="post">
+        <div class="form-group">
+            <input placeholder="Adresse email..." required name="_username" type="text" class="form-control" >
+        </div>
+        <div class="form-group">
+            <input placeholder="Mot de passe..." required name="_password" type="password" class="form-control" >
+        </div>
+        <div>
+            <button type="submit" class="btn btn-success">Connexion!</button>
+            <div style="background-color: whitesmoke;color:whitesmoke">
+                <a href="{{path('AddP')}}"></i><button class="btn btn-success"></button>
+            </a>
+            </div>
+        </div>
+
+    </form>
+    </center>
+{% endblock %}

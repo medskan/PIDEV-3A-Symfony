@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    <h1> Liste des Permissions</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ asset('base-back.html.twig')}}">Home</a></li>
+            <li class="breadcrumb-item active">Liste des Permissions</li>
+        </ol>
+    </nav>
+{% endblock %}
+
+{% block body %}
+
+    <table id="permissions" class="table table-striped">
+        <thead>
+        <tr>
+            <td>Type de la permission </td>
+            <td>Réclamation</td>
+            <td>Date début </td>
+            <td>Date fin </td>
+            <td>Personnel</td>
+            <td>Image</td>
+            <td>Action</td>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for i in pr %}
+            <tr>
+
+                <td>{{ i.type }}</td>
+                <td>{{ i.reclamation }}</td>
+                <td>{{ i.dateD|date("d/m/Y")  }}</td>
+                <td>{{ i.dateF|date("d/m/Y")  }}</td>
+                <td>{{ i.personnel.nomP|default('Your default value here')}} </td>
+                <td class="table-light"><img src="{{ asset('/uploads/' ~ i.image ) }}" alt="img" class="image" style="max-height: 150px; width: 120px;" ></td>
+
+
+                <td>
+                    <form action="{{ path('suppPr',{'id':i.id}) }}">
+                        <button>Supprimer</button></form>
+
+                </td>
+
+
+
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {% endblock %}
+

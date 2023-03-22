@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <main id="main" class="main">
+        {{ form(searchFounisseur) }}
+        <table id="fournisseurs" class="table table-striped">
+            <thead>
+
+
+            <tr>
+
+                <td>CIN</td>
+                <td>Nom</td>
+                <td>Prénom</td>
+                <td>Téléphone</td>
+                <td>Email</td>
+                <td>Adresse</td>
+                <td>RIB</td>
+                <td>Image</td>
+
+
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for fournisseurs in resultOfSearch %}
+                <tr>
+
+
+                    <td>{{ fournisseurs.id }}</td>
+                    <td>{{ fournisseurs.nomF }}</td>
+                    <td>{{ fournisseurs.prenomF }}</td>
+                    <td>{{ fournisseurs.telF }}</td>
+                    <td>{{ fournisseurs.emailF }}</td>
+                    <td>{{ fournisseurs.adresse }}</td>
+                    <td>{{ fournisseurs.ribF  }}</td>
+                    <td class="table-light"><img src="{{ asset('/uploads/' ~ fournisseurs.image ) }}" alt="img" class="image" style="max-height: 150px; width: 120px;" ></td>
+
+
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </main>
+{% endblock %}
